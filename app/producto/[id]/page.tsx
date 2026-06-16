@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useParams, useRouter } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
-import { ShoppingCart, Zap, ChevronLeft, Check, Package, Shield, RefreshCw, Clock, Smartphone } from "lucide-react"
+import { ShoppingCart, Zap, ChevronLeft, Check, Package, Shield, RefreshCw, Clock, Smartphone, FileText, ChevronDown } from "lucide-react"
 import { getProducto, productos } from "@/lib/productos"
 import { useCart } from "@/lib/store"
 
@@ -18,6 +18,7 @@ export default function ProductoPage() {
   const [imgActiva, setImgActiva] = useState(0)
   const [agregado, setAgregado] = useState(false)
   const [cantidad, setCantidad] = useState(1)
+  const [requisitoAbierto, setRequisitoAbierto] = useState<number | null>(0)
 
   if (!producto) return (
     <div style={{ textAlign: "center", padding: "8rem 1.5rem" }}>
@@ -27,9 +28,10 @@ export default function ProductoPage() {
   )
 
   const descuento = producto.precioLista > producto.precio ? Math.round(((producto.precioLista - producto.precio) / producto.precioLista) * 100) : 0
-  const precioPorDia = producto.categoria === "prepago" ? (producto.precio / 30).toFixed(2) : null
+  const precioPorDia = producto.categoria === "recargas" ? (producto.precio / 30).toFixed(2) : null
   const relacionados = productos.filter((p) => p.categoria === producto.categoria && p.id !== producto.id).slice(0, 3)
   const esEsim = producto.subcategoria === "esim"
+  const tieneRequisitos = producto.requisitos && producto.requisitos.length > 0
 
   const handleAgregar = () => {
     agregar({ id: producto.id, nombre: producto.nombre, precio: producto.precio, imagen: producto.imagen, cantidad, variante })
@@ -180,6 +182,62 @@ export default function ProductoPage() {
           </div>
         </div>
       </div>
+
+      {tieneRequisitos && (
+        <div style={{ marginTop: "3rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "1.25rem" }}>
+            <div style={{ width: "36px", height: "36px", background: "rgba(21,101,192,0.1)", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--md-primary)", flexShrink: 0 }}>
+              <FileText size={18} />
+            </div>
+            <div>
+              <h2 style={{ fontSize: "1.4rem", fontWeight: 800, color: "var(--md-on-surface)", letterSpacing: "-0.02em" }}>Requisitos para contratar</h2>
+              <p style={{ fontSize: "0.85rem", color: "var(--md-on-surface-variant)", marginTop: "2px" }}>Ten a la mano estos documentos antes de proceder con tu solicitud.</p>
+            </div>
+          </div>
+
+          {(producto.categoria === "planes_renta" || producto.categoria === "recargas") && (
+            <div style={{ background: "rgba(255,152,0,0.08)", border: "1px solid rgba(255,152,0,0.25)", borderRadius: "14px", padding: "0.85rem 1.1rem", marginBottom: "1.25rem", display: "flex", alignItems: "flex-start", gap: "10px" }}>
+              <span style={{ fontSize: "1rem", flexShrink: 0, marginTop: "1px" }}>⚠️</span>
+              <p style={{ fontSize: "0.88rem", color: "#E65100", lineHeight: 1.55, fontWeight: 500 }}>
+                Para completar la activación del servicio se requiere la firma del contrato de servicio Telcel. El proceso de portabilidad tarda <strong>24 horas hábiles</strong> y está sujeto a validación del IFT (lunes a viernes 9:00–17:30 hrs).
+              </p>
+            </div>
+          )}
+
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+            {producto.requisitos!.map((req, i) => (
+              <div key={i} style={{ background: "rgba(255,255,255,0.75)", backdropFilter: "blur(16px)", border: `1.5px solid ${requisitoAbierto === i ? "rgba(21,101,192,0.25)" : "rgba(255,255,255,0.92)"}`, borderRadius: "18px", overflow: "hidden", boxShadow: requisitoAbierto === i ? "0 4px 20px rgba(21,101,192,0.1)" : "0 2px 8px rgba(21,101,192,0.05)", transition: "all 0.3s ease" }}>
+                <button onClick={() => setRequisitoAbierto(requisitoAbierto === i ? null : i)} style={{ width: "100%", padding: "1rem 1.25rem", display: "flex", alignItems: "center", justifyContent: "space-between", background: "none", border: "none", cursor: "pointer", textAlign: "left", gap: "1rem" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                    <div style={{ width: "28px", height: "28px", borderRadius: "999px", background: "var(--md-primary)", color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.78rem", fontWeight: 800, flexShrink: 0 }}>
+                      {i + 1}
+                    </div>
+                    <span style={{ fontSize: "0.95rem", fontWeight: 700, color: "var(--md-on-surface)" }}>{req.tipo}</span>
+                    <span style={{ fontSize: "0.78rem", color: "var(--md-on-surface-variant)", background: "rgba(21,101,192,0.08)", padding: "2px 10px", borderRadius: "999px" }}>
+                      {req.campos.length} documentos
+                    </span>
+                  </div>
+                  <span style={{ color: "var(--md-primary)", flexShrink: 0, transition: "transform 0.3s", transform: requisitoAbierto === i ? "rotate(180deg)" : "rotate(0deg)", display: "flex" }}>
+                    <ChevronDown size={18} />
+                  </span>
+                </button>
+                {requisitoAbierto === i && (
+                  <div style={{ padding: "0 1.25rem 1.25rem", borderTop: "1px solid rgba(21,101,192,0.08)" }}>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", paddingTop: "1rem" }}>
+                      {req.campos.map((campo, j) => (
+                        <div key={j} style={{ display: "flex", alignItems: "flex-start", gap: "10px", fontSize: "0.9rem", color: "var(--md-on-surface)", lineHeight: 1.5 }}>
+                          <Check size={15} style={{ color: "#2E7D32", flexShrink: 0, marginTop: "2px" }} />
+                          {campo}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {esEsim && (
         <div style={{ marginTop: "3rem" }}>

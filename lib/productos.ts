@@ -1,10 +1,12 @@
+"use client"
+
 export type Producto = {
   id: string
   nombre: string
   descripcion: string
   precio: number
   precioLista: number
-  categoria: "prepago" | "pospago" | "internet" | "vehicular" | "accesorio" | "smartphone"
+  categoria: "recargas" | "paquetes" | "internet" | "planes_renta" | "vehicular" | "accesorio" | "smartphone"
   subcategoria?: string
   marca: string
   imagen: string
@@ -13,31 +15,69 @@ export type Producto = {
   stock: number
   specs: { label: string; valor: string }[]
   beneficios?: string[]
+  requisitos?: { tipo: string; campos: string[] }[]
   esDigital?: boolean
   destacado?: boolean
   badge?: string
 }
 
 export const categorias = [
-  { id: "todos",      label: "Todo" },
-  { id: "prepago",    label: "Prepago" },
-  { id: "pospago",    label: "Pospago" },
-  { id: "internet",   label: "Internet en Casa" },
-  { id: "vehicular",  label: "GPS Vehicular" },
-  { id: "smartphone", label: "Smartphones" },
-  { id: "accesorio",  label: "Accesorios" },
+  { id: "todos",        label: "Todo" },
+  { id: "recargas",     label: "Recargas" },
+  { id: "paquetes",     label: "Paquetes" },
+  { id: "internet",     label: "Internet" },
+  { id: "planes_renta", label: "Planes de Renta" },
+  { id: "vehicular",    label: "GPS Vehicular" },
+  { id: "smartphone",   label: "Smartphones" },
+  { id: "accesorio",    label: "Accesorios" },
+]
+
+const REQUISITOS_PORTABILIDAD_POSPAGO = [
+  "Número del cliente a portar",
+  "NIP de portabilidad (marcar *#062# o enviar NIP al 051)",
+  "Correo electrónico",
+  "INE vigente por ambos lados y legible",
+  "2 números de contacto del cliente (trabajo y casa)",
+  "2 referencias personales (nombre, primer apellido y celular)",
+  "Firma de contrato de servicio",
+]
+
+const REQUISITOS_MIGRACION = [
+  "Número telefónico actual",
+  "ICCID de la SIM actual",
+  "INE por ambos lados",
+  "Número de contacto",
+  "Número de oficina",
+  "Correo electrónico",
+  "2 referencias personales (nombre, primer apellido y número de contacto)",
+  "Firma de contrato de servicio",
+]
+
+const REQUISITOS_LINEA_NUEVA = [
+  "Número de contacto (opcional)",
+  "Correo electrónico",
+  "INE vigente por ambos lados y legible",
+  "2 números de contacto del cliente (trabajo y casa)",
+  "2 referencias personales (nombre, primer apellido y celular)",
+  "Firma de contrato de servicio",
+]
+
+const REQUISITOS_PORTABILIDAD_PREPAGO = [
+  "Número a portar",
+  "CURP",
+  "IMEI 2 del teléfono",
+  "NIP de portabilidad (marcar o enviar mensaje al 051 con la palabra NIP)",
 ]
 
 export const productos: Producto[] = [
 
-  // ── PREPAGO SIM FÍSICA — PLANES LIBRE ───────────────────────────
   {
     id: "telcel-libre-1",
     nombre: "Plan Telcel Libre 1",
     descripcion: "Entra a la red Telcel con llamadas, mensajes y redes sociales ilimitadas. Sin plazos forzosos.",
     precio: 249,
     precioLista: 299,
-    categoria: "prepago",
+    categoria: "recargas",
     subcategoria: "sim",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80",
@@ -53,6 +93,10 @@ export const productos: Producto[] = [
       { label: "Cashback Telcel", valor: "5% mensual" },
       { label: "Plazo forzoso", valor: "Ninguno" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad", campos: REQUISITOS_PORTABILIDAD_PREPAGO },
+      { tipo: "Línea nueva", campos: REQUISITOS_LINEA_NUEVA },
+    ],
     destacado: false,
     badge: "$249",
   },
@@ -62,7 +106,7 @@ export const productos: Producto[] = [
     descripcion: "Más gigas para navegar. 5 GB (7.5 GB con promo), llamadas y redes ilimitadas con cashback del 5%.",
     precio: 319,
     precioLista: 369,
-    categoria: "prepago",
+    categoria: "recargas",
     subcategoria: "sim",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80",
@@ -77,6 +121,10 @@ export const productos: Producto[] = [
       { label: "Claro Drive", valor: "20 GB" },
       { label: "Claro Video", valor: "Incluido" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad", campos: REQUISITOS_PORTABILIDAD_PREPAGO },
+      { tipo: "Línea nueva", campos: REQUISITOS_LINEA_NUEVA },
+    ],
     destacado: false,
     badge: "$319",
   },
@@ -86,7 +134,7 @@ export const productos: Producto[] = [
     descripcion: "El plan más popular. 6 GB (9 GB con promo), llamadas y redes ilimitadas con cashback del 10%.",
     precio: 399,
     precioLista: 449,
-    categoria: "prepago",
+    categoria: "recargas",
     subcategoria: "sim",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80",
@@ -101,6 +149,10 @@ export const productos: Producto[] = [
       { label: "Claro Drive", valor: "20 GB" },
       { label: "Claro Video", valor: "Incluido" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad", campos: REQUISITOS_PORTABILIDAD_PREPAGO },
+      { tipo: "Línea nueva", campos: REQUISITOS_LINEA_NUEVA },
+    ],
     destacado: true,
     badge: "Más popular",
   },
@@ -110,7 +162,7 @@ export const productos: Producto[] = [
     descripcion: "10 GB (15 GB con promo), cashback 15% y todos los beneficios ilimitados.",
     precio: 499,
     precioLista: 549,
-    categoria: "prepago",
+    categoria: "recargas",
     subcategoria: "sim",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80",
@@ -125,6 +177,10 @@ export const productos: Producto[] = [
       { label: "Claro Drive", valor: "20 GB" },
       { label: "Claro Video", valor: "Incluido" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad", campos: REQUISITOS_PORTABILIDAD_PREPAGO },
+      { tipo: "Línea nueva", campos: REQUISITOS_LINEA_NUEVA },
+    ],
     destacado: true,
     badge: "Recomendado",
   },
@@ -134,7 +190,7 @@ export const productos: Producto[] = [
     descripcion: "20 GB (30 GB con promo). Para usuarios que necesitan más datos sin plazos forzosos.",
     precio: 599,
     precioLista: 699,
-    categoria: "prepago",
+    categoria: "recargas",
     subcategoria: "sim",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80",
@@ -149,6 +205,10 @@ export const productos: Producto[] = [
       { label: "Claro Drive", valor: "20 GB" },
       { label: "Claro Video", valor: "Incluido" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad", campos: REQUISITOS_PORTABILIDAD_PREPAGO },
+      { tipo: "Línea nueva", campos: REQUISITOS_LINEA_NUEVA },
+    ],
     destacado: false,
     badge: "Libre 5",
   },
@@ -158,7 +218,7 @@ export const productos: Producto[] = [
     descripcion: "30 GB (45 GB con promo). Ideal para trabajo y entretenimiento sin límites.",
     precio: 699,
     precioLista: 799,
-    categoria: "prepago",
+    categoria: "recargas",
     subcategoria: "sim",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80",
@@ -173,6 +233,10 @@ export const productos: Producto[] = [
       { label: "Claro Drive", valor: "20 GB" },
       { label: "Claro Video", valor: "Incluido" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad", campos: REQUISITOS_PORTABILIDAD_PREPAGO },
+      { tipo: "Línea nueva", campos: REQUISITOS_LINEA_NUEVA },
+    ],
     destacado: false,
     badge: "Libre 6",
   },
@@ -182,7 +246,7 @@ export const productos: Producto[] = [
     descripcion: "40 GB (60 GB con promo). El plan ideal para usuarios exigentes.",
     precio: 799,
     precioLista: 899,
-    categoria: "prepago",
+    categoria: "recargas",
     subcategoria: "sim",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80",
@@ -197,6 +261,10 @@ export const productos: Producto[] = [
       { label: "Claro Drive", valor: "20 GB" },
       { label: "Claro Video", valor: "Incluido" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad", campos: REQUISITOS_PORTABILIDAD_PREPAGO },
+      { tipo: "Línea nueva", campos: REQUISITOS_LINEA_NUEVA },
+    ],
     destacado: true,
     badge: "Libre 7",
   },
@@ -206,7 +274,7 @@ export const productos: Producto[] = [
     descripcion: "45 GB (67.5 GB con promo). Para quienes necesitan lo mejor de Telcel.",
     precio: 999,
     precioLista: 1099,
-    categoria: "prepago",
+    categoria: "recargas",
     subcategoria: "sim",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80",
@@ -219,6 +287,10 @@ export const productos: Producto[] = [
       { label: "Llamadas", valor: "Ilimitadas" },
       { label: "Cashback Telcel", valor: "15% mensual" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad", campos: REQUISITOS_PORTABILIDAD_PREPAGO },
+      { tipo: "Línea nueva", campos: REQUISITOS_LINEA_NUEVA },
+    ],
     destacado: false,
     badge: "Libre 9",
   },
@@ -228,7 +300,7 @@ export const productos: Producto[] = [
     descripcion: "55 GB (82.5 GB con promo) y cashback del 15%. El plan completo de la línea Libre.",
     precio: 1299,
     precioLista: 1399,
-    categoria: "prepago",
+    categoria: "recargas",
     subcategoria: "sim",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80",
@@ -241,6 +313,10 @@ export const productos: Producto[] = [
       { label: "Llamadas", valor: "Ilimitadas" },
       { label: "Cashback Telcel", valor: "15% mensual" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad", campos: REQUISITOS_PORTABILIDAD_PREPAGO },
+      { tipo: "Línea nueva", campos: REQUISITOS_LINEA_NUEVA },
+    ],
     destacado: false,
     badge: "Libre 12",
   },
@@ -250,7 +326,7 @@ export const productos: Producto[] = [
     descripcion: "El plan más completo de la línea Libre. 40 GB (60 GB con promo) y cashback del 42%.",
     precio: 1499,
     precioLista: 1599,
-    categoria: "prepago",
+    categoria: "recargas",
     subcategoria: "sim",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80",
@@ -265,18 +341,21 @@ export const productos: Producto[] = [
       { label: "Claro Drive", valor: "20 GB" },
       { label: "Claro Video", valor: "Incluido" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad", campos: REQUISITOS_PORTABILIDAD_PREPAGO },
+      { tipo: "Línea nueva", campos: REQUISITOS_LINEA_NUEVA },
+    ],
     destacado: false,
     badge: "VIP",
   },
 
-  // ── eSIM ────────────────────────────────────────────────────────
   {
     id: "esim-libre-3",
     nombre: "eSIM Telcel Libre 3",
     descripcion: "Sin SIM física. Mayor seguridad, entrega inmediata y código QR listo para activar. 6 GB (9 GB con promo).",
     precio: 399,
     precioLista: 449,
-    categoria: "prepago",
+    categoria: "paquetes",
     subcategoria: "esim",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1562408590-e32931084e23?w=600&q=80",
@@ -292,6 +371,10 @@ export const productos: Producto[] = [
       { label: "Compatible", valor: "iPhone XS+, Samsung S20+, Pixel 3+" },
       { label: "Cashback", valor: "10% mensual" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad eSIM", campos: REQUISITOS_PORTABILIDAD_PREPAGO },
+      { tipo: "Línea nueva eSIM", campos: REQUISITOS_LINEA_NUEVA },
+    ],
     destacado: true,
     badge: "Digital",
   },
@@ -301,7 +384,7 @@ export const productos: Producto[] = [
     descripcion: "La eSIM más vendida. 10 GB (15 GB con promo), sin SIM física. Actívate al instante escaneando un QR.",
     precio: 499,
     precioLista: 549,
-    categoria: "prepago",
+    categoria: "paquetes",
     subcategoria: "esim",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1562408590-e32931084e23?w=600&q=80",
@@ -317,6 +400,10 @@ export const productos: Producto[] = [
       { label: "Compatible", valor: "iPhone XS+, Samsung S20+, Pixel 3+" },
       { label: "Cashback", valor: "15% mensual" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad eSIM", campos: REQUISITOS_PORTABILIDAD_PREPAGO },
+      { tipo: "Línea nueva eSIM", campos: REQUISITOS_LINEA_NUEVA },
+    ],
     destacado: true,
     badge: "Más vendida",
   },
@@ -326,7 +413,7 @@ export const productos: Producto[] = [
     descripcion: "Cámbiate a Telcel y obtén beneficios durante 12 meses. $100 x 30 días, redes sociales y llamadas ilimitadas.",
     precio: 100,
     precioLista: 199,
-    categoria: "prepago",
+    categoria: "paquetes",
     subcategoria: "esim",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1562408590-e32931084e23?w=600&q=80",
@@ -343,6 +430,9 @@ export const productos: Producto[] = [
       { label: "Número", valor: "Conservas el tuyo" },
       { label: "Activación", valor: "Por QR inmediata" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad eSIM", campos: REQUISITOS_PORTABILIDAD_PREPAGO },
+    ],
     destacado: true,
     badge: "Portabilidad",
   },
@@ -352,7 +442,7 @@ export const productos: Producto[] = [
     descripcion: "Cobertura en más de 40 países. Sin cambiar tu número actual. Actívala antes de tu viaje.",
     precio: 449,
     precioLista: 549,
-    categoria: "prepago",
+    categoria: "paquetes",
     subcategoria: "esim",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80",
@@ -365,23 +455,29 @@ export const productos: Producto[] = [
     stock: 999,
     esDigital: true,
     specs: [
-      { label: "Cobertura", valor: "+40 países" },
+      { label: "Cobertura", valor: "EUA, Canadá, España, Francia, Alemania, Italia, Reino Unido, Argentina, Brasil, Colombia, Chile, Perú, y más de 30 países adicionales" },
       { label: "Datos roaming", valor: "10 GB" },
       { label: "Activación", valor: "Instantánea por QR" },
       { label: "Soporte", valor: "24/7" },
+    ],
+    requisitos: [
+      { tipo: "eSIM Internacional", campos: [
+        "Correo electrónico",
+        "IMEI del dispositivo",
+        "Confirmación de compatibilidad eSIM del equipo",
+      ]},
     ],
     destacado: false,
     badge: "Internacional",
   },
 
-  // ── POSPAGO — PLANES ULTRA ──────────────────────────────────────
   {
     id: "telcel-ultra-3",
     nombre: "Telcel Ultra 3",
-    descripcion: "Plan pospago con velocidad 5G ultra. 15 GB, minutos, mensajes y WhatsApp ilimitados.",
+    descripcion: "Plan de renta con velocidad 5G ultra. 15 GB, minutos, mensajes y WhatsApp ilimitados.",
     precio: 349,
     precioLista: 399,
-    categoria: "pospago",
+    categoria: "planes_renta",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
     imagenes: ["https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80"],
@@ -399,16 +495,21 @@ export const productos: Producto[] = [
       { label: "Claro Drive", valor: "20 GB" },
       { label: "Claro Video", valor: "Incluido" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad", campos: REQUISITOS_PORTABILIDAD_POSPAGO },
+      { tipo: "Migración", campos: REQUISITOS_MIGRACION },
+      { tipo: "Línea nueva", campos: REQUISITOS_LINEA_NUEVA },
+    ],
     destacado: false,
     badge: "Ultra 3",
   },
   {
     id: "telcel-ultra-4",
     nombre: "Telcel Ultra 4",
-    descripcion: "25 GB con velocidad 5G ultra. El plan pospago más equilibrado para uso diario.",
+    descripcion: "25 GB con velocidad 5G ultra. El plan de renta más equilibrado para uso diario.",
     precio: 449,
     precioLista: 499,
-    categoria: "pospago",
+    categoria: "planes_renta",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
     imagenes: ["https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80"],
@@ -423,6 +524,11 @@ export const productos: Producto[] = [
       { label: "Abierto", valor: "$449/mes" },
       { label: "Controlado", valor: "$499/mes" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad", campos: REQUISITOS_PORTABILIDAD_POSPAGO },
+      { tipo: "Migración", campos: REQUISITOS_MIGRACION },
+      { tipo: "Línea nueva", campos: REQUISITOS_LINEA_NUEVA },
+    ],
     destacado: true,
     badge: "Más popular",
   },
@@ -432,7 +538,7 @@ export const productos: Producto[] = [
     descripcion: "40 GB con velocidad 5G ultra. Para usuarios que necesitan más datos y lo mejor de Telcel.",
     precio: 549,
     precioLista: 599,
-    categoria: "pospago",
+    categoria: "planes_renta",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
     imagenes: ["https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80"],
@@ -447,6 +553,11 @@ export const productos: Producto[] = [
       { label: "Abierto", valor: "$549/mes" },
       { label: "Controlado", valor: "$599/mes" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad", campos: REQUISITOS_PORTABILIDAD_POSPAGO },
+      { tipo: "Migración", campos: REQUISITOS_MIGRACION },
+      { tipo: "Línea nueva", campos: REQUISITOS_LINEA_NUEVA },
+    ],
     destacado: true,
     badge: "Recomendado",
   },
@@ -456,7 +567,7 @@ export const productos: Producto[] = [
     descripcion: "60 GB con velocidad 5G ultra. El preferido por usuarios profesionales.",
     precio: 749,
     precioLista: 799,
-    categoria: "pospago",
+    categoria: "planes_renta",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
     imagenes: ["https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80"],
@@ -471,6 +582,11 @@ export const productos: Producto[] = [
       { label: "Abierto", valor: "$749/mes" },
       { label: "Controlado", valor: "$799/mes" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad", campos: REQUISITOS_PORTABILIDAD_POSPAGO },
+      { tipo: "Migración", campos: REQUISITOS_MIGRACION },
+      { tipo: "Línea nueva", campos: REQUISITOS_LINEA_NUEVA },
+    ],
     destacado: false,
     badge: "Ultra 7",
   },
@@ -480,7 +596,7 @@ export const productos: Producto[] = [
     descripcion: "100 GB con velocidad 5G ultra. Para los que no quieren límites en datos.",
     precio: 949,
     precioLista: 999,
-    categoria: "pospago",
+    categoria: "planes_renta",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
     imagenes: ["https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80"],
@@ -495,6 +611,11 @@ export const productos: Producto[] = [
       { label: "Abierto", valor: "$949/mes" },
       { label: "Controlado", valor: "$999/mes" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad", campos: REQUISITOS_PORTABILIDAD_POSPAGO },
+      { tipo: "Migración", campos: REQUISITOS_MIGRACION },
+      { tipo: "Línea nueva", campos: REQUISITOS_LINEA_NUEVA },
+    ],
     destacado: true,
     badge: "Ultra 9",
   },
@@ -504,7 +625,7 @@ export const productos: Producto[] = [
     descripcion: "Datos ilimitados con velocidad 5G ultra. Política de uso justo: 200 GB a máxima velocidad.",
     precio: 1349,
     precioLista: 1399,
-    categoria: "pospago",
+    categoria: "planes_renta",
     marca: "Telcel",
     imagen: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
     imagenes: ["https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80"],
@@ -521,11 +642,15 @@ export const productos: Producto[] = [
       { label: "Claro Drive", valor: "20 GB" },
       { label: "Claro Video", valor: "Incluido" },
     ],
+    requisitos: [
+      { tipo: "Portabilidad", campos: REQUISITOS_PORTABILIDAD_POSPAGO },
+      { tipo: "Migración", campos: REQUISITOS_MIGRACION },
+      { tipo: "Línea nueva", campos: REQUISITOS_LINEA_NUEVA },
+    ],
     destacado: true,
     badge: "Ilimitado",
   },
 
-  // ── INTERNET EN CASA ────────────────────────────────────────────
   {
     id: "wifi-telcel-399",
     nombre: "WiFi Telcel $399",
@@ -549,6 +674,14 @@ export const productos: Producto[] = [
       { label: "Dispositivos", valor: "2 simultáneos" },
       { label: "Streaming", valor: "Claro Video + atresplayer + Universal+" },
       { label: "Instalación", valor: "No requiere · Basta conectarlo a la corriente" },
+    ],
+    requisitos: [
+      { tipo: "Contratación", campos: [
+        "Correo electrónico",
+        "INE vigente por ambos lados",
+        "Comprobante de domicilio",
+        "Firma de contrato de servicio a 24 meses",
+      ]},
     ],
     destacado: true,
     badge: "Desde $399",
@@ -576,6 +709,14 @@ export const productos: Producto[] = [
       { label: "Dispositivos", valor: "5 simultáneos" },
       { label: "Streaming", valor: "Claro Video + atresplayer + Universal+" },
     ],
+    requisitos: [
+      { tipo: "Contratación", campos: [
+        "Correo electrónico",
+        "INE vigente por ambos lados",
+        "Comprobante de domicilio",
+        "Firma de contrato de servicio a 24 meses",
+      ]},
+    ],
     destacado: true,
     badge: "5G",
   },
@@ -601,11 +742,18 @@ export const productos: Producto[] = [
       { label: "Dispositivos", valor: "10 simultáneos" },
       { label: "Streaming", valor: "Claro Video + atresplayer + Universal+" },
     ],
+    requisitos: [
+      { tipo: "Contratación", campos: [
+        "Correo electrónico",
+        "INE vigente por ambos lados",
+        "Comprobante de domicilio",
+        "Firma de contrato de servicio a 24 meses",
+      ]},
+    ],
     destacado: false,
     badge: "Con movilidad",
   },
 
-  // ── GPS VEHICULAR ───────────────────────────────────────────────
   {
     id: "secmi-auto",
     nombre: "Localizador Secmi Auto",
@@ -653,7 +801,6 @@ export const productos: Producto[] = [
     badge: "Empresarial",
   },
 
-  // ── SMARTPHONES ─────────────────────────────────────────────────
   {
     id: "iphone-15",
     nombre: "iPhone 15 128GB",
@@ -706,7 +853,6 @@ export const productos: Producto[] = [
     destacado: false,
   },
 
-  // ── ACCESORIOS ──────────────────────────────────────────────────
   {
     id: "cargador-65w",
     nombre: "Cargador 65W GaN USB-C",

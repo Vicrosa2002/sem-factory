@@ -8,12 +8,11 @@ import { productos } from "@/lib/productos"
 export default function Home() {
   const esims = productos.filter((p) => p.subcategoria === "esim" && p.destacado)
   const sims = productos.filter((p) => p.subcategoria === "sim" && p.destacado)
-  const pospago = productos.filter((p) => p.categoria === "pospago" && p.destacado).slice(0, 3)
+  const planesRenta = productos.filter((p) => p.categoria === "planes_renta" && p.destacado).slice(0, 3)
 
   return (
     <div>
 
-      {/* HERO */}
       <section style={{
         minHeight: "94vh",
         background: "linear-gradient(145deg, #0A2D6E 0%, #1255B5 45%, #0277BD 75%, #0288D1 100%)",
@@ -36,21 +35,14 @@ export default function Home() {
 
         <div style={{ maxWidth: "960px", textAlign: "center", position: "relative", zIndex: 1 }} className="animate-fade-up">
 
-          {/* BADGE TELCEL */}
           <div style={{
             display: "inline-flex", alignItems: "center", gap: "8px",
             background: "rgba(255,255,255,0.12)", backdropFilter: "blur(12px)",
             border: "1px solid rgba(255,255,255,0.25)", borderRadius: "999px",
             padding: "0.5rem 1.25rem", marginBottom: "1.75rem",
           }}>
-            <div style={{
-              width: "8px", height: "8px", borderRadius: "50%",
-              background: "#4AFF6B",
-              boxShadow: "0 0 8px #4AFF6B",
-            }} />
-            <span style={{ color: "white", fontSize: "0.85rem", fontWeight: 600 }}>
-              Distribuidor Autorizado Telcel
-            </span>
+            <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#4AFF6B", boxShadow: "0 0 8px #4AFF6B" }} />
+            <span style={{ color: "white", fontSize: "0.85rem", fontWeight: 600 }}>Distribuidor Autorizado Telcel</span>
           </div>
 
           <h1 style={{
@@ -58,26 +50,16 @@ export default function Home() {
             lineHeight: 1.06, letterSpacing: "-0.035em", marginBottom: "1.25rem",
           }}>
             SIM y eSIM Telcel<br />
-            <span style={{
-              background: "linear-gradient(135deg, #90CAF9 0%, #B3E5FC 50%, #E0F7FA 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-            }}>
+            <span style={{ background: "linear-gradient(135deg, #90CAF9 0%, #B3E5FC 50%, #E0F7FA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               actívate hoy mismo
             </span>
           </h1>
 
-          <p style={{
-            fontSize: "1.15rem", color: "rgba(255,255,255,0.78)",
-            lineHeight: 1.65, maxWidth: "560px", margin: "0 auto 1.5rem",
-          }}>
+          <p style={{ fontSize: "1.15rem", color: "rgba(255,255,255,0.78)", lineHeight: 1.65, maxWidth: "560px", margin: "0 auto 1.5rem" }}>
             La mejor cobertura 4G LTE y 5G de México. Sin plazos forzosos, con portabilidad incluida y activación instantánea.
           </p>
 
-          {/* BENEFICIOS RÁPIDOS */}
-          <div style={{
-            display: "flex", justifyContent: "center", gap: "1.5rem",
-            flexWrap: "wrap", marginBottom: "2.5rem",
-          }}>
+          <div style={{ display: "flex", justifyContent: "center", gap: "1.5rem", flexWrap: "wrap", marginBottom: "2.5rem" }}>
             {["Portabilidad gratis", "Activación por QR", "Sin plazos forzosos", "Red 5G"].map((b) => (
               <div key={b} style={{ display: "flex", alignItems: "center", gap: "6px", color: "rgba(255,255,255,0.85)", fontSize: "0.88rem" }}>
                 <Check size={14} style={{ color: "#4AFF6B" }} />
@@ -87,7 +69,7 @@ export default function Home() {
           </div>
 
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/catalogo?cat=prepago" style={{
+            <Link href="/catalogo?cat=recargas" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               background: "white", color: "#0D3B8E",
               padding: "1rem 2.2rem", borderRadius: "999px", textDecoration: "none",
@@ -114,7 +96,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* SCROLL INDICATOR */}
         <div style={{ position: "absolute", bottom: "2rem", left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: "6px" }}>
           <div style={{ width: "24px", height: "40px", border: "2px solid rgba(255,255,255,0.25)", borderRadius: "999px", display: "flex", alignItems: "flex-start", justifyContent: "center", padding: "5px" }}>
             <div style={{ width: "4px", height: "8px", background: "rgba(255,255,255,0.5)", borderRadius: "999px", animation: "fadeUp 1.5s ease infinite" }} />
@@ -122,15 +103,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* NAVEGACIÓN DE SERVICIOS */}
       <section style={{ padding: "3rem 1.5rem 1rem", maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "1rem" }}>
           {[
-            { icon: <Zap size={22} />,       label: "SIM Prepago",      sub: "Planes Libre",       href: "/catalogo?cat=prepago", color: "#1565C0" },
-            { icon: <Zap size={22} />,       label: "eSIM",             sub: "Sin SIM física",      href: "/catalogo?cat=esim",    color: "#0277BD" },
-            { icon: <Phone size={22} />,     label: "Pospago",          sub: "Planes Ultra",       href: "/catalogo?cat=pospago", color: "#0288D1" },
-            { icon: <Wifi size={22} />,      label: "Internet",         sub: "WiFi en casa",       href: "/catalogo?cat=internet",color: "#0891B2" },
-            { icon: <Car size={22} />,       label: "GPS Vehicular",    sub: "Flotillas y autos",  href: "/catalogo?cat=vehicular",color: "#0D3B8E" },
+            { icon: <Zap size={22} />,   label: "Recargas",        sub: "Planes Libre",      href: "/catalogo?cat=recargas",     color: "#1565C0" },
+            { icon: <Zap size={22} />,   label: "eSIM",            sub: "Sin SIM física",    href: "/catalogo?cat=esim",         color: "#0277BD" },
+            { icon: <Phone size={22} />, label: "Planes de Renta", sub: "Planes Ultra 5G",   href: "/catalogo?cat=planes_renta", color: "#0288D1" },
+            { icon: <Wifi size={22} />,  label: "Internet",        sub: "WiFi en casa",      href: "/catalogo?cat=internet",     color: "#0891B2" },
+            { icon: <Car size={22} />,   label: "GPS Vehicular",   sub: "Flotillas y autos", href: "/catalogo?cat=vehicular",    color: "#0D3B8E" },
           ].map((item, i) => (
             <Link key={i} href={item.href} style={{ textDecoration: "none" }}>
               <div className="glass-card animate-fade-up" style={{
@@ -158,7 +138,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BANNER eSIM DESTACADO */}
       <section style={{ padding: "2rem 1.5rem 1rem", maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{
           background: "linear-gradient(135deg, #6B21A8 0%, #1565C0 50%, #0288D1 100%)",
@@ -217,8 +196,7 @@ export default function Home() {
                   border: "1px solid rgba(255,255,255,0.2)", borderRadius: "16px",
                   padding: "1rem 1.25rem",
                   display: "flex", alignItems: "center", justifyContent: "space-between",
-                  transition: "all 0.2s",
-                  cursor: "pointer",
+                  transition: "all 0.2s", cursor: "pointer",
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.2)"}
                 onMouseLeave={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.12)"}>
@@ -237,14 +215,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SIM FÍSICA */}
       <section style={{ padding: "2rem 1.5rem 1rem", maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "1.5rem", flexWrap: "wrap", gap: "1rem" }}>
           <div>
-            <p style={{ fontSize: "0.78rem", fontWeight: 700, color: "var(--md-primary)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "4px" }}>Prepago · Sin plazos forzosos</p>
+            <p style={{ fontSize: "0.78rem", fontWeight: 700, color: "var(--md-primary)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "4px" }}>Recargas · Sin plazos forzosos</p>
             <h2 style={{ fontSize: "1.8rem", fontWeight: 800, color: "var(--md-on-surface)", letterSpacing: "-0.025em" }}>Planes Libre — SIM Física</h2>
           </div>
-          <Link href="/catalogo?cat=prepago" style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(21,101,192,0.1)", color: "var(--md-primary)", padding: "0.6rem 1.2rem", borderRadius: "999px", textDecoration: "none", fontWeight: 600, fontSize: "0.9rem" }}>
+          <Link href="/catalogo?cat=recargas" style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(21,101,192,0.1)", color: "var(--md-primary)", padding: "0.6rem 1.2rem", borderRadius: "999px", textDecoration: "none", fontWeight: 600, fontSize: "0.9rem" }}>
             Ver todos <ChevronRight size={16} />
           </Link>
         </div>
@@ -257,7 +234,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BANNER CÁMBIATE */}
       <section style={{ padding: "2rem 1.5rem", maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{
           background: "linear-gradient(135deg, #0D3B8E 0%, #1565C0 50%, #0288D1 100%)",
@@ -274,11 +250,11 @@ export default function Home() {
               Cámbiate a Telcel hoy
             </h3>
             <p style={{ color: "rgba(255,255,255,0.72)", fontSize: "1rem", lineHeight: 1.6, maxWidth: "420px" }}>
-              Portabilidad sin costo, conserva tu número y estrena plan el mismo día. Sin tramites complicados.
+              Portabilidad sin costo, conserva tu número y estrena plan el mismo día. Sin trámites complicados.
             </p>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", position: "relative", zIndex: 1, flexShrink: 0 }}>
-            <Link href="/catalogo?cat=prepago" style={{
+            <Link href="/catalogo?cat=recargas" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               background: "white", color: "#0D3B8E",
               padding: "1rem 2rem", borderRadius: "999px", textDecoration: "none",
@@ -287,7 +263,7 @@ export default function Home() {
             }}
             onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.05)"}
             onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}>
-              Ver planes <ArrowRight size={18} />
+              Ver recargas <ArrowRight size={18} />
             </Link>
             <a href="https://wa.me/5212461576175?text=Hola%2C%20quiero%20cambiarme%20a%20Telcel" target="_blank" rel="noopener noreferrer" style={{
               display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px",
@@ -304,19 +280,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* POSPAGO */}
       <section style={{ padding: "1.5rem 1.5rem 1rem", maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "1.5rem", flexWrap: "wrap", gap: "1rem" }}>
           <div>
             <p style={{ fontSize: "0.78rem", fontWeight: 700, color: "var(--md-primary)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "4px" }}>Renta mensual · 5G Ultra</p>
-            <h2 style={{ fontSize: "1.8rem", fontWeight: 800, color: "var(--md-on-surface)", letterSpacing: "-0.025em" }}>Planes Telcel Ultra</h2>
+            <h2 style={{ fontSize: "1.8rem", fontWeight: 800, color: "var(--md-on-surface)", letterSpacing: "-0.025em" }}>Planes de Renta Telcel Ultra</h2>
           </div>
-          <Link href="/catalogo?cat=pospago" style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(21,101,192,0.1)", color: "var(--md-primary)", padding: "0.6rem 1.2rem", borderRadius: "999px", textDecoration: "none", fontWeight: 600, fontSize: "0.9rem" }}>
+          <Link href="/catalogo?cat=planes_renta" style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(21,101,192,0.1)", color: "var(--md-primary)", padding: "0.6rem 1.2rem", borderRadius: "999px", textDecoration: "none", fontWeight: 600, fontSize: "0.9rem" }}>
             Ver todos <ChevronRight size={16} />
           </Link>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(270px, 1fr))", gap: "1.25rem" }}>
-          {pospago.map((p, i) => (
+          {planesRenta.map((p, i) => (
             <div key={p.id} className="animate-fade-up" style={{ animationDelay: `${i * 0.07}s` }}>
               <ProductCard producto={p} />
             </div>
@@ -324,7 +299,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* INTERNET + VEHICULAR */}
       <section style={{ padding: "1.5rem 1.5rem 2rem", maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}>
           <div style={{ background: "linear-gradient(135deg, #0277BD, #0288D1)", borderRadius: "24px", padding: "2rem", position: "relative", overflow: "hidden" }}>
@@ -350,7 +324,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURES */}
       <section style={{ padding: "1rem 1.5rem 3rem", maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))", gap: "1.25rem" }}>
           {[
@@ -372,7 +345,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer style={{ padding: "0 1.5rem 1.5rem", maxWidth: "1200px", margin: "0 auto" }}>
         <div className="glass-dark" style={{ borderRadius: "24px", padding: "1.75rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
