@@ -36,7 +36,6 @@ export default function CarritoPage() {
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 360px", gap: "1.5rem", alignItems: "start" }}>
 
-        {/* ITEMS */}
         <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
           {items.map((item) => (
             <div key={item.id + (item.variante || "")} className="glass-card animate-fade-up" style={{ padding: "1.25rem", display: "flex", gap: "1.25rem", alignItems: "center" }}>
@@ -86,7 +85,6 @@ export default function CarritoPage() {
           ))}
         </div>
 
-        {/* RESUMEN */}
         <div className="glass-card" style={{ padding: "1.5rem", position: "sticky", top: "90px" }}>
           <h2 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--md-on-surface)", marginBottom: "1.25rem" }}>
             Resumen del pedido
@@ -115,7 +113,7 @@ export default function CarritoPage() {
             </button>
             <div style={{ display: "flex", alignItems: "center", gap: "8px", justifyContent: "center", fontSize: "0.8rem", color: "var(--md-on-surface-variant)" }}>
               <Zap size={13} style={{ color: "var(--md-primary)" }} />
-              Pago seguro con Stripe
+              Pago seguro con MercadoPago
             </div>
           </div>
 

@@ -46,11 +46,13 @@ export default function Navbar() {
 
       <div style={{ display: "flex", gap: "2px", alignItems: "center" }}>
         {[
-          { label: "Inicio",    href: "/" },
-          { label: "Catálogo",  href: "/catalogo" },
-          { label: "eSIM",      href: "/catalogo?cat=esim" },
-          { label: "Cobertura", href: "/cobertura" },
-          { label: "Soporte",   href: "/soporte" },
+          { label: "Inicio",          href: "/" },
+          { label: "Catálogo",        href: "/catalogo" },
+          { label: "eSIM",            href: "/catalogo?cat=esim" },
+          { label: "Planes de Renta", href: "/catalogo?cat=planes_renta" },
+          { label: "Recargas",        href: "/catalogo?cat=recargas" },
+          { label: "Cobertura",       href: "/cobertura" },
+          { label: "Soporte",         href: "/soporte" },
         ].map((item) => (
           <Link
             key={item.label}
