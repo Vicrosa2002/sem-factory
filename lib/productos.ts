@@ -1,5 +1,3 @@
-"use client"
-
 export type Producto = {
   id: string
   nombre: string
@@ -15,6 +13,7 @@ export type Producto = {
   stock: number
   specs: { label: string; valor: string }[]
   beneficios?: string[]
+  redes?: string[]
   requisitos?: { tipo: string; campos: string[] }[]
   esDigital?: boolean
   destacado?: boolean
@@ -31,6 +30,8 @@ export const categorias = [
   { id: "smartphone",   label: "Smartphones" },
   { id: "accesorio",    label: "Accesorios" },
 ]
+
+const REDES_LIBRE = ["whatsapp", "facebook", "instagram", "x", "snapchat", "uber"]
 
 const REQUISITOS_PORTABILIDAD_POSPAGO = [
   "Número del cliente a portar",
@@ -84,12 +85,12 @@ export const productos: Producto[] = [
     imagenes: ["https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80"],
     variantes: [],
     stock: 100,
-    beneficios: ["4 GB (6 GB con promo 50%)", "Llamadas ilimitadas", "SMS ilimitados", "Redes sociales sin límite", "WhatsApp sin límite", "Cashback 5%"],
+    redes: REDES_LIBRE,
+    beneficios: ["4 GB (6 GB con promo 50%)", "Llamadas ilimitadas", "SMS ilimitados", "Redes sociales sin límite", "Cashback 5%"],
     specs: [
       { label: "Datos", valor: "4 GB (6 GB con promo)" },
       { label: "Llamadas", valor: "Ilimitadas México, EUA y Canadá" },
-      { label: "Redes sociales", valor: "X, FB, Messenger, IG, Snapchat, Uber" },
-      { label: "WhatsApp", valor: "Sin límite México, EUA y Canadá" },
+      { label: "Redes sociales", valor: "WhatsApp, Facebook, Instagram, X, Snapchat, Uber" },
       { label: "Cashback Telcel", valor: "5% mensual" },
       { label: "Plazo forzoso", valor: "Ninguno" },
     ],
@@ -113,6 +114,7 @@ export const productos: Producto[] = [
     imagenes: ["https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80"],
     variantes: [],
     stock: 100,
+    redes: REDES_LIBRE,
     beneficios: ["5 GB (7.5 GB con promo 50%)", "Llamadas ilimitadas", "Redes sociales sin límite", "Cashback 5%", "Claro Drive 20GB", "Claro Video"],
     specs: [
       { label: "Datos", valor: "5 GB (7.5 GB con promo)" },
@@ -141,6 +143,7 @@ export const productos: Producto[] = [
     imagenes: ["https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80"],
     variantes: [],
     stock: 100,
+    redes: REDES_LIBRE,
     beneficios: ["6 GB (9 GB con promo 50%)", "Llamadas ilimitadas", "Redes sociales sin límite", "Cashback 10%", "Claro Drive 20GB", "Claro Video"],
     specs: [
       { label: "Datos", valor: "6 GB (9 GB con promo)" },
@@ -169,6 +172,7 @@ export const productos: Producto[] = [
     imagenes: ["https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80"],
     variantes: [],
     stock: 100,
+    redes: REDES_LIBRE,
     beneficios: ["10 GB (15 GB con promo 50%)", "Llamadas ilimitadas", "Cashback 15%", "Claro Drive 20GB", "Claro Video"],
     specs: [
       { label: "Datos", valor: "10 GB (15 GB con promo)" },
@@ -197,6 +201,7 @@ export const productos: Producto[] = [
     imagenes: ["https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80"],
     variantes: [],
     stock: 100,
+    redes: REDES_LIBRE,
     beneficios: ["20 GB (30 GB con promo 50%)", "Llamadas ilimitadas", "Cashback 15%", "Claro Drive 20GB", "Claro Video"],
     specs: [
       { label: "Datos", valor: "20 GB (30 GB con promo)" },
@@ -225,6 +230,7 @@ export const productos: Producto[] = [
     imagenes: ["https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80"],
     variantes: [],
     stock: 100,
+    redes: REDES_LIBRE,
     beneficios: ["30 GB (45 GB con promo 50%)", "Llamadas ilimitadas", "Cashback 15%", "Claro Drive 20GB", "Claro Video"],
     specs: [
       { label: "Datos", valor: "30 GB (45 GB con promo)" },
@@ -253,6 +259,7 @@ export const productos: Producto[] = [
     imagenes: ["https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80"],
     variantes: [],
     stock: 100,
+    redes: REDES_LIBRE,
     beneficios: ["40 GB (60 GB con promo 50%)", "Llamadas ilimitadas", "Cashback 15%", "Claro Drive 20GB", "Claro Video"],
     specs: [
       { label: "Datos", valor: "40 GB (60 GB con promo)" },
@@ -281,7 +288,8 @@ export const productos: Producto[] = [
     imagenes: ["https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80"],
     variantes: [],
     stock: 100,
-    beneficios: ["45 GB (67.5 GB con promo 50%)", "Llamadas ilimitadas", "Cashback 15%", "Claro Drive 20GB", "Claro Video"],
+    redes: REDES_LIBRE,
+    beneficios: ["45 GB (67.5 GB con promo 50%)", "Llamadas ilimitadas", "Cashback 15%"],
     specs: [
       { label: "Datos", valor: "45 GB (67.5 GB con promo)" },
       { label: "Llamadas", valor: "Ilimitadas" },
@@ -307,7 +315,8 @@ export const productos: Producto[] = [
     imagenes: ["https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80"],
     variantes: [],
     stock: 100,
-    beneficios: ["55 GB (82.5 GB con promo 50%)", "Llamadas ilimitadas", "Cashback 15%", "Claro Drive 20GB", "Claro Video"],
+    redes: REDES_LIBRE,
+    beneficios: ["55 GB (82.5 GB con promo 50%)", "Llamadas ilimitadas", "Cashback 15%"],
     specs: [
       { label: "Datos", valor: "55 GB (82.5 GB con promo)" },
       { label: "Llamadas", valor: "Ilimitadas" },
@@ -333,6 +342,7 @@ export const productos: Producto[] = [
     imagenes: ["https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80"],
     variantes: [],
     stock: 100,
+    redes: REDES_LIBRE,
     beneficios: ["40 GB (60 GB con promo 50%)", "Llamadas ilimitadas", "Cashback 42%", "Claro Drive 20GB", "Claro Video"],
     specs: [
       { label: "Datos", valor: "40 GB (60 GB con promo)" },
@@ -350,9 +360,9 @@ export const productos: Producto[] = [
   },
 
   {
-    id: "esim-libre-3",
-    nombre: "eSIM Telcel Libre 3",
-    descripcion: "Sin SIM física. Mayor seguridad, entrega inmediata y código QR listo para activar. 6 GB (9 GB con promo).",
+    id: "esim-linea-nueva",
+    nombre: "eSIM Telcel — Línea Nueva",
+    descripcion: "Actívate en Telcel sin SIM física. Obtén un número nuevo al instante con código QR. Disponible en Región 6, 7 y 9.",
     precio: 399,
     precioLista: 449,
     categoria: "paquetes",
@@ -363,27 +373,27 @@ export const productos: Producto[] = [
     variantes: [],
     stock: 999,
     esDigital: true,
-    beneficios: ["6 GB (9 GB con promo)", "Activación por QR", "Entrega inmediata y segura", "Llamadas ilimitadas", "Cashback 10%"],
+    redes: REDES_LIBRE,
+    beneficios: ["Número nuevo Telcel", "Activación por QR", "Entrega en horario hábil (9:00–19:00)", "Llamadas ilimitadas", "Redes sociales sin límite"],
     specs: [
-      { label: "Activación", valor: "Instantánea por QR" },
-      { label: "Datos", valor: "6 GB (9 GB con promo 50%)" },
-      { label: "Llamadas", valor: "Ilimitadas México, EUA y Canadá" },
+      { label: "Tipo", valor: "Línea nueva" },
+      { label: "Activación", valor: "Por QR — horario L-V 9:00 a 19:00" },
+      { label: "Regiones", valor: "6 (Gto, Qro, Ags, SLP), 7 (Pue, Tlax, Oax, Gro, Ver), 9 (CDMX, Mex, Hgo, Mor)" },
+      { label: "Lada", valor: "Asignada por el IFT — puede variar según ciudad" },
       { label: "Compatible", valor: "iPhone XS+, Samsung S20+, Pixel 3+" },
-      { label: "Cashback", valor: "10% mensual" },
     ],
     requisitos: [
-      { tipo: "Portabilidad eSIM", campos: REQUISITOS_PORTABILIDAD_PREPAGO },
       { tipo: "Línea nueva eSIM", campos: REQUISITOS_LINEA_NUEVA },
     ],
     destacado: true,
-    badge: "Digital",
+    badge: "Línea nueva",
   },
   {
-    id: "esim-libre-4",
-    nombre: "eSIM Telcel Libre 4",
-    descripcion: "La eSIM más vendida. 10 GB (15 GB con promo), sin SIM física. Actívate al instante escaneando un QR.",
-    precio: 499,
-    precioLista: 549,
+    id: "esim-mismo-numero",
+    nombre: "eSIM Telcel — Mismo Número",
+    descripcion: "Migra tu SIM física actual a eSIM sin cambiar tu número. Más seguridad y sin tarjeta física.",
+    precio: 399,
+    precioLista: 449,
     categoria: "paquetes",
     subcategoria: "esim",
     marca: "Telcel",
@@ -392,25 +402,24 @@ export const productos: Producto[] = [
     variantes: [],
     stock: 999,
     esDigital: true,
-    beneficios: ["10 GB (15 GB con promo)", "Activación por QR", "Entrega inmediata", "Llamadas ilimitadas", "Cashback 15%"],
+    redes: REDES_LIBRE,
+    beneficios: ["Conservas tu número actual", "Migración de SIM a eSIM", "Activación por QR", "Sin trámites en tienda", "Llamadas ilimitadas"],
     specs: [
-      { label: "Activación", valor: "Instantánea por QR" },
-      { label: "Datos", valor: "10 GB (15 GB con promo 50%)" },
-      { label: "Llamadas", valor: "Ilimitadas" },
+      { label: "Tipo", valor: "Migración SIM → eSIM" },
+      { label: "Activación", valor: "Por QR — horario L-V 9:00 a 19:00" },
+      { label: "Número", valor: "Conservas el tuyo" },
       { label: "Compatible", valor: "iPhone XS+, Samsung S20+, Pixel 3+" },
-      { label: "Cashback", valor: "15% mensual" },
     ],
     requisitos: [
-      { tipo: "Portabilidad eSIM", campos: REQUISITOS_PORTABILIDAD_PREPAGO },
-      { tipo: "Línea nueva eSIM", campos: REQUISITOS_LINEA_NUEVA },
+      { tipo: "Migración a eSIM", campos: REQUISITOS_MIGRACION },
     ],
     destacado: true,
-    badge: "Más vendida",
+    badge: "Mismo número",
   },
   {
     id: "esim-portabilidad",
-    nombre: "eSIM Portabilidad Telcel",
-    descripcion: "Cámbiate a Telcel y obtén beneficios durante 12 meses. $100 x 30 días, redes sociales y llamadas ilimitadas.",
+    nombre: "eSIM Telcel — Portabilidad",
+    descripcion: "Cámbiate a Telcel desde cualquier operadora y obtén beneficios durante 12 meses. Conserva tu número.",
     precio: 100,
     precioLista: 199,
     categoria: "paquetes",
@@ -421,54 +430,21 @@ export const productos: Producto[] = [
     variantes: [],
     stock: 999,
     esDigital: true,
+    redes: REDES_LIBRE,
     beneficios: ["Promo 12 meses", "$100 x 30 días", "Redes sociales ilimitadas", "Llamadas y mensajes ilimitados", "Conserva tu número"],
     specs: [
+      { label: "Tipo", valor: "Portabilidad" },
       { label: "Promoción", valor: "Beneficios durante 12 meses" },
       { label: "Precio", valor: "$100 x 30 días" },
-      { label: "Redes sociales", valor: "Ilimitadas" },
-      { label: "Llamadas", valor: "Ilimitadas" },
+      { label: "Activación", valor: "Por QR — horario L-V 9:00 a 19:00" },
       { label: "Número", valor: "Conservas el tuyo" },
-      { label: "Activación", valor: "Por QR inmediata" },
+      { label: "Compatible", valor: "iPhone XS+, Samsung S20+, Pixel 3+" },
     ],
     requisitos: [
       { tipo: "Portabilidad eSIM", campos: REQUISITOS_PORTABILIDAD_PREPAGO },
     ],
     destacado: true,
     badge: "Portabilidad",
-  },
-  {
-    id: "esim-viajero",
-    nombre: "eSIM Viajero Internacional",
-    descripcion: "Cobertura en más de 40 países. Sin cambiar tu número actual. Actívala antes de tu viaje.",
-    precio: 449,
-    precioLista: 549,
-    categoria: "paquetes",
-    subcategoria: "esim",
-    marca: "Telcel",
-    imagen: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80",
-    imagenes: ["https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80"],
-    variantes: [
-      { label: "7 días", valor: "7d" },
-      { label: "15 días", valor: "15d" },
-      { label: "30 días", valor: "30d" },
-    ],
-    stock: 999,
-    esDigital: true,
-    specs: [
-      { label: "Cobertura", valor: "EUA, Canadá, España, Francia, Alemania, Italia, Reino Unido, Argentina, Brasil, Colombia, Chile, Perú, y más de 30 países adicionales" },
-      { label: "Datos roaming", valor: "10 GB" },
-      { label: "Activación", valor: "Instantánea por QR" },
-      { label: "Soporte", valor: "24/7" },
-    ],
-    requisitos: [
-      { tipo: "eSIM Internacional", campos: [
-        "Correo electrónico",
-        "IMEI del dispositivo",
-        "Confirmación de compatibilidad eSIM del equipo",
-      ]},
-    ],
-    destacado: false,
-    badge: "Internacional",
   },
 
   {
@@ -492,8 +468,6 @@ export const productos: Producto[] = [
       { label: "Red", valor: "5G Ultra velocidad" },
       { label: "Abierto", valor: "$349/mes" },
       { label: "Controlado", valor: "$399/mes" },
-      { label: "Claro Drive", valor: "20 GB" },
-      { label: "Claro Video", valor: "Incluido" },
     ],
     requisitos: [
       { tipo: "Portabilidad", campos: REQUISITOS_PORTABILIDAD_POSPAGO },
@@ -639,8 +613,6 @@ export const productos: Producto[] = [
       { label: "Red", valor: "5G Ultra velocidad" },
       { label: "Abierto", valor: "$1,349/mes" },
       { label: "Controlado", valor: "$1,399/mes" },
-      { label: "Claro Drive", valor: "20 GB" },
-      { label: "Claro Video", valor: "Incluido" },
     ],
     requisitos: [
       { tipo: "Portabilidad", campos: REQUISITOS_PORTABILIDAD_POSPAGO },
@@ -669,11 +641,9 @@ export const productos: Producto[] = [
       { label: "Datos", valor: "Ilimitados" },
       { label: "Velocidad", valor: "Mayor velocidad de la red" },
       { label: "Servicio", valor: "Fijo · Módem 4G/5G a 24 meses" },
-      { label: "Movilidad", valor: "$100 por evento" },
       { label: "Uso justo", valor: "150 GB luego 5 Mbps" },
       { label: "Dispositivos", valor: "2 simultáneos" },
       { label: "Streaming", valor: "Claro Video + atresplayer + Universal+" },
-      { label: "Instalación", valor: "No requiere · Basta conectarlo a la corriente" },
     ],
     requisitos: [
       { tipo: "Contratación", campos: [
@@ -704,7 +674,6 @@ export const productos: Producto[] = [
       { label: "Datos", valor: "Ilimitados" },
       { label: "Velocidad", valor: "Máxima velocidad 5G" },
       { label: "Servicio", valor: "Fijo · Módem 5G a 24 meses" },
-      { label: "Movilidad", valor: "$100 por evento" },
       { label: "Uso justo", valor: "Máxima velocidad siempre" },
       { label: "Dispositivos", valor: "5 simultáneos" },
       { label: "Streaming", valor: "Claro Video + atresplayer + Universal+" },
