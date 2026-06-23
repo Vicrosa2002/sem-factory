@@ -38,13 +38,12 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: linear-gradient(135deg, #E3F0FF 0%, #F0F4FF 40%, #E8F5FF 100%);
+  background: #F0F4FF;
   min-height: 100vh;
   color: var(--md-on-surface);
   font-family: "Google Sans", "Segoe UI", system-ui, sans-serif;
 }
 
-/* GLASS CARDS */
 .glass {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
@@ -62,20 +61,18 @@ body {
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: #FFFFFF;
+  border: 1px solid #E8EDF5;
   border-radius: var(--radius-lg);
-  box-shadow: 0 4px 24px rgba(21, 101, 192, 0.10), 0 1px 4px rgba(0,0,0,0.06);
-  transition: transform 0.35s var(--ease-expressive), box-shadow 0.3s var(--ease-standard);
+  box-shadow: 0 2px 8px rgba(21, 101, 192, 0.08), 0 1px 3px rgba(0,0,0,0.04);
+  transition: transform 0.25s var(--ease-expressive), box-shadow 0.25s var(--ease-standard);
+  will-change: transform;
 }
 .glass-card:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 16px 48px rgba(21, 101, 192, 0.18), 0 4px 12px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(21, 101, 192, 0.14), 0 4px 8px rgba(0,0,0,0.06);
 }
 
-/* BUTTONS — Material Expressive */
 .btn-filled {
   display: inline-flex;
   align-items: center;
@@ -90,13 +87,12 @@ body {
   font-size: 0.95rem;
   letter-spacing: 0.01em;
   box-shadow: 0 4px 16px rgba(21, 101, 192, 0.35);
-  transition: all 0.3s var(--ease-expressive);
+  transition: all 0.25s var(--ease-expressive);
   text-decoration: none;
 }
 .btn-filled:hover {
-  transform: scale(1.04) translateY(-2px);
-  box-shadow: 0 8px 28px rgba(21, 101, 192, 0.45);
-  background: linear-gradient(135deg, #64B5F6, #1565C0);
+  transform: scale(1.03) translateY(-1px);
+  box-shadow: 0 8px 24px rgba(21, 101, 192, 0.4);
 }
 .btn-filled:active { transform: scale(0.97); }
 
@@ -112,12 +108,12 @@ body {
   cursor: pointer;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: all 0.3s var(--ease-expressive);
+  transition: all 0.25s var(--ease-expressive);
   text-decoration: none;
 }
 .btn-tonal:hover {
-  background: rgba(21, 101, 192, 0.2);
-  transform: scale(1.03);
+  background: rgba(21, 101, 192, 0.18);
+  transform: scale(1.02);
 }
 
 .btn-outlined {
@@ -132,15 +128,14 @@ body {
   cursor: pointer;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: all 0.3s var(--ease-expressive);
+  transition: all 0.25s var(--ease-expressive);
   text-decoration: none;
 }
 .btn-outlined:hover {
   background: rgba(21, 101, 192, 0.08);
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
-/* CHIPS */
 .chip {
   display: inline-flex;
   align-items: center;
@@ -157,10 +152,9 @@ body {
   user-select: none;
 }
 .chip:hover {
-  background: rgba(21, 101, 192, 0.08);
+  background: rgba(21, 101, 192, 0.06);
   border-color: var(--md-primary);
   color: var(--md-primary);
-  transform: scale(1.05);
 }
 .chip.active {
   background: var(--md-primary);
@@ -169,7 +163,6 @@ body {
   box-shadow: 0 4px 12px rgba(21, 101, 192, 0.3);
 }
 
-/* BADGE */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -186,13 +179,12 @@ body {
 .badge-error   { background: #FFEBEE; color: var(--md-error); }
 .badge-warning { background: #FFF3E0; color: var(--md-warning); }
 
-/* INPUTS */
 .input-field {
   width: 100%;
   padding: 0.85rem 1.1rem;
   border-radius: var(--radius-sm);
   border: 1.5px solid var(--md-outline);
-  background: rgba(255,255,255,0.8);
+  background: white;
   color: var(--md-on-surface);
   font-size: 0.95rem;
   transition: all 0.2s var(--ease-standard);
@@ -200,23 +192,19 @@ body {
 }
 .input-field:focus {
   border-color: var(--md-primary);
-  background: white;
-  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.12);
+  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.1);
 }
 
-/* SURFACE TONES */
-.surface { background: rgba(255,255,255,0.85); border-radius: var(--radius-md); }
+.surface { background: white; border-radius: var(--radius-md); }
 .surface-variant { background: var(--md-surface-variant); border-radius: var(--radius-md); }
 
-/* SCROLLBAR */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--md-outline); border-radius: 99px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--md-primary-light); }
 
-/* ANIMATIONS */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes fadeIn {
@@ -224,7 +212,7 @@ body {
   to   { opacity: 1; }
 }
 @keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.92); }
+  from { opacity: 0; transform: scale(0.94); }
   to   { opacity: 1; transform: scale(1); }
 }
 @keyframes shimmer {
@@ -232,9 +220,9 @@ body {
   100% { background-position: 200% 0; }
 }
 
-.animate-fade-up   { animation: fadeUp  0.5s var(--ease-decelerate) both; }
-.animate-fade-in   { animation: fadeIn  0.4s var(--ease-standard)   both; }
-.animate-scale-in  { animation: scaleIn 0.4s var(--ease-expressive)  both; }
+.animate-fade-up   { animation: fadeUp  0.35s var(--ease-decelerate) both; }
+.animate-fade-in   { animation: fadeIn  0.3s  var(--ease-standard)   both; }
+.animate-scale-in  { animation: scaleIn 0.3s  var(--ease-expressive)  both; }
 
 .skeleton {
   background: linear-gradient(90deg, #e8edf5 25%, #f4f7ff 50%, #e8edf5 75%);
@@ -243,7 +231,6 @@ body {
   border-radius: var(--radius-sm);
 }
 
-/* RIPPLE */
 .ripple {
   position: relative;
   overflow: hidden;
@@ -252,8 +239,8 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%);
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.2s;
 }
 .ripple:active::after { opacity: 1; }
