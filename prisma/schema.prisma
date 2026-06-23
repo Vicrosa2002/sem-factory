@@ -20,8 +20,8 @@ model compradores {
 model solicitudes {
   id                String                  @id @default(uuid()) @db.Uuid
   comprador_id      String                  @db.Uuid
-  tipo              TipoSolicitud
-  status            StatusSolicitud         @default(PENDIENTE)
+  tipo              String
+  status            String                  @default("PENDIENTE")
   numero_a_portar   String?
   nip_portabilidad  String?
   numero_telefono   String?
@@ -53,12 +53,12 @@ model solicitud_referencias {
 }
 
 model solicitud_documentos {
-  id           String        @id @default(uuid()) @db.Uuid
-  solicitud_id String        @db.Uuid
-  tipo         TipoDocumento
+  id           String      @id @default(uuid()) @db.Uuid
+  solicitud_id String      @db.Uuid
+  tipo         String
   url          String
-  created_at   DateTime      @default(now()) @db.Timestamptz(6)
-  solicitud    solicitudes   @relation(fields: [solicitud_id], references: [id])
+  created_at   DateTime    @default(now()) @db.Timestamptz(6)
+  solicitud    solicitudes @relation(fields: [solicitud_id], references: [id])
 }
 
 model pagos {
@@ -71,129 +71,4 @@ model pagos {
   created_at       DateTime    @default(now()) @db.Timestamptz(6)
   updated_at       DateTime    @updatedAt @db.Timestamptz(6)
   solicitud        solicitudes @relation(fields: [solicitud_id], references: [id])
-}
-
-enum TipoSolicitud {
-  PORTABILIDAD_POSPAGO
-  MIGRACION
-  LINEA_NUEVA
-  PORTABILIDAD_PREPAGO
-  ESIM_PORTABILIDAD
-  ESIM_LINEA_NUEVA
-  INTERNET
-}
-
-enum StatusSolicitud {
-  PENDIENTE
-  EN_PROCESO
-  COMPLETADA
-  RECHAZADA
-  CANCELADA
-}
-
-enum TipoDocumento {
-  INE_FRENTE
-  INE_REVERSO
-  CURP
-  COMPROBANTE_DOMICILIO
-}
-
-model erp_celulares {
-  id                    String    @id @db.Uuid
-  factura               String
-  fecha_ingreso         DateTime  @db.Date
-  marca_modelo          String
-  imei                  String    @unique
-  precio_sin_iva        Decimal   @db.Decimal(12, 2)
-  iva                   Decimal   @db.Decimal(12, 2)
-  precio_publico        Decimal   @db.Decimal(12, 2)
-  precio_mayoreo        Decimal?  @db.Decimal(12, 2)
-  precio_publico_actual Decimal?  @db.Decimal(12, 2)
-  status                String
-  activo                Boolean
-  estatus_mercancia     String?
-  canal                 String?
-  observaciones         String?
-  created_at            DateTime  @db.Timestamptz(6)
-  updated_at            DateTime? @db.Timestamptz(6)
-
-  @@map("celulares")
-}
-
-model erp_sims {
-  id                String    @id @db.Uuid
-  iccid             String    @unique
-  tipo_sim          String
-  operadora         String
-  numero_telefono   String?
-  factura           String
-  fecha_ingreso     DateTime  @db.Date
-  precio_sin_iva    Decimal   @db.Decimal(12, 2)
-  iva               Decimal   @db.Decimal(12, 2)
-  precio_publico    Decimal   @db.Decimal(12, 2)
-  precio_mayoreo    Decimal?  @db.Decimal(12, 2)
-  status            String
-  activo            Boolean
-  estatus_mercancia String?
-  observaciones     String?
-  created_at        DateTime  @db.Timestamptz(6)
-  updated_at        DateTime? @db.Timestamptz(6)
-
-  @@map("sims")
-}
-
-model erp_productos {
-  id               String    @id @db.Uuid
-  grupo_id         String    @db.Uuid
-  marca_id         String?   @db.Uuid
-  sku              String?
-  nombre_tecnico   String
-  nombre_comercial String?
-  clave_sat        String?
-  almacenamiento   String?
-  color            String?
-  activo           Boolean
-  created_at       DateTime  @db.Timestamptz(6)
-  updated_at       DateTime? @db.Timestamptz(6)
-
-  @@map("productos")
-}
-
-model erp_grupos_productos {
-  id          String    @id @db.Uuid
-  nombre      String    @unique
-  descripcion String?
-  activo      Boolean
-  created_at  DateTime  @db.Timestamptz(6)
-
-  @@map("grupos_productos")
-}
-
-model erp_marcas_productos {
-  id         String    @id @db.Uuid
-  nombre     String    @unique
-  activo     Boolean
-  created_at DateTime  @db.Timestamptz(6)
-
-  @@map("marcas_productos")
-}
-
-model erp_accesorios {
-  id                String    @id @db.Uuid
-  codigo_producto   String
-  descripcion       String
-  marca             String?
-  modelo            String?
-  numero_lote       String
-  cantidad          Int
-  precio_sin_iva    Decimal   @db.Decimal(12, 2)
-  iva               Decimal   @db.Decimal(12, 2)
-  precio_publico    Decimal   @db.Decimal(12, 2)
-  precio_mayoreo    Decimal?  @db.Decimal(12, 2)
-  activo            Boolean
-  estatus_mercancia String?
-  created_at        DateTime  @db.Timestamptz(6)
-  updated_at        DateTime? @db.Timestamptz(6)
-
-  @@map("accesorios")
 }
