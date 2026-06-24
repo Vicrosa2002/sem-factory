@@ -12,33 +12,51 @@ export default function Home() {
 
   return (
     <div>
-
-      <section style={{
-        minHeight: "100vh",
-        background: "linear-gradient(145deg, #0A2D6E 0%, #1255B5 50%, #0288D1 100%)",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        padding: "6rem 1.5rem 4rem",
-        position: "relative", overflow: "hidden",
-      }}>
+      <section
+        style={{
+          minHeight: "100vh",
+          background: "linear-gradient(145deg, #0A2D6E 0%, #1255B5 50%, #0288D1 100%)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "6rem 1.5rem 4rem",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
         <div style={{ position: "absolute", top: "-10%", right: "-8%", width: "500px", height: "500px", background: "rgba(66,165,245,0.1)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", bottom: "-10%", left: "-5%", width: "350px", height: "350px", background: "rgba(2,136,209,0.08)", borderRadius: "50%", filter: "blur(60px)", pointerEvents: "none" }} />
 
         <div style={{ maxWidth: "900px", textAlign: "center", position: "relative", zIndex: 1 }}>
-          <div style={{
-            display: "inline-flex", alignItems: "center", gap: "8px",
-            background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)",
-            border: "1px solid rgba(255,255,255,0.2)", borderRadius: "999px",
-            padding: "0.45rem 1.1rem", marginBottom: "1.5rem",
-          }}>
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              background: "rgba(255,255,255,0.1)",
+              backdropFilter: "blur(8px)",
+              border: "1px solid rgba(255,255,255,0.2)",
+              borderRadius: "999px",
+              padding: "0.45rem 1.1rem",
+              marginBottom: "1.5rem",
+            }}
+          >
             <div style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#4AFF6B" }} />
             <span style={{ color: "white", fontSize: "0.82rem", fontWeight: 600 }}>Distribuidor Autorizado Telcel</span>
           </div>
 
-          <h1 style={{
-            fontSize: "clamp(2.4rem, 5.5vw, 4rem)", fontWeight: 900, color: "white",
-            lineHeight: 1.08, letterSpacing: "-0.03em", marginBottom: "1.25rem",
-          }}>
-            SIM y eSIM Telcel<br />
+          <h1
+            style={{
+              fontSize: "clamp(2.4rem, 5.5vw, 4rem)",
+              fontWeight: 900,
+              color: "white",
+              lineHeight: 1.08,
+              letterSpacing: "-0.03em",
+              marginBottom: "1.25rem",
+            }}
+          >
+            SIM y eSIM Telcel
+            <br />
             <span style={{ background: "linear-gradient(135deg, #90CAF9, #E0F7FA)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               actívate hoy mismo
             </span>
@@ -58,29 +76,60 @@ export default function Home() {
           </div>
 
           <div style={{ display: "flex", gap: "0.875rem", justifyContent: "center", flexWrap: "wrap", marginBottom: "2rem" }}>
-            <Link href="/catalogo?cat=recargas" style={{
-              display: "inline-flex", alignItems: "center", gap: "8px",
-              background: "white", color: "#0D3B8E",
-              padding: "0.9rem 2rem", borderRadius: "999px", textDecoration: "none",
-              fontWeight: 800, fontSize: "0.95rem",
-              boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
-            }}>
+            <Link
+              href="/catalogo?cat=recargas"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                background: "white",
+                color: "#0D3B8E",
+                padding: "0.9rem 2rem",
+                borderRadius: "999px",
+                textDecoration: "none",
+                fontWeight: 800,
+                fontSize: "0.95rem",
+                boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
+              }}
+            >
               Cámbiate a Telcel <ChevronRight size={17} />
             </Link>
-            <Link href="/catalogo?cat=esim" style={{
-              display: "inline-flex", alignItems: "center", gap: "8px",
-              background: "rgba(255,255,255,0.12)", backdropFilter: "blur(8px)",
-              color: "white", padding: "0.9rem 2rem", borderRadius: "999px",
-              textDecoration: "none", fontWeight: 700, fontSize: "0.95rem",
-              border: "1.5px solid rgba(255,255,255,0.3)",
-            }}>
+            <Link
+              href="/catalogo?cat=esim"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                background: "rgba(255,255,255,0.12)",
+                backdropFilter: "blur(8px)",
+                color: "white",
+                padding: "0.9rem 2rem",
+                borderRadius: "999px",
+                textDecoration: "none",
+                fontWeight: 700,
+                fontSize: "0.95rem",
+                border: "1.5px solid rgba(255,255,255,0.3)",
+              }}
+            >
               <Zap size={17} /> Activar eSIM
             </Link>
           </div>
 
-          <div style={{ display: "flex", justifyContent: "center", gap: "6px", alignItems: "center", background: "rgba(255,152,0,0.15)", border: "1px solid rgba(255,152,0,0.3)", borderRadius: "999px", padding: "0.4rem 1rem", display: "inline-flex" }}>
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              background: "rgba(255,152,0,0.15)",
+              border: "1px solid rgba(255,152,0,0.3)",
+              borderRadius: "999px",
+              padding: "0.4rem 1rem",
+            }}
+          >
             <Clock size={13} style={{ color: "#FFB74D" }} />
-            <span style={{ fontSize: "0.78rem", color: "#FFB74D", fontWeight: 600 }}>Activaciones L-V 9:00–19:00 hrs · Fuera de horario se procesan el siguiente día hábil</span>
+            <span style={{ fontSize: "0.78rem", color: "#FFB74D", fontWeight: 600 }}>
+              Activaciones L-V 9:00–19:00 hrs · Fuera de horario se procesan el siguiente día hábil
+            </span>
           </div>
         </div>
       </section>
@@ -88,24 +137,37 @@ export default function Home() {
       <section style={{ padding: "2.5rem 1.5rem 1rem", maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "0.875rem" }}>
           {[
-            { icon: <Zap size={20} />,   label: "Recargas",        sub: "Planes Libre",      href: "/catalogo?cat=recargas",     color: "#1565C0" },
-            { icon: <Zap size={20} />,   label: "eSIM",            sub: "Sin SIM física",    href: "/catalogo?cat=esim",         color: "#0277BD" },
-            { icon: <Phone size={20} />, label: "Planes de Renta", sub: "Planes Ultra 5G",   href: "/catalogo?cat=planes_renta", color: "#0288D1" },
-            { icon: <Wifi size={20} />,  label: "Internet",        sub: "WiFi en casa",      href: "/catalogo?cat=internet",     color: "#0891B2" },
-            { icon: <Car size={20} />,   label: "GPS Vehicular",   sub: "Flotillas y autos", href: "/catalogo?cat=vehicular",    color: "#0D3B8E" },
+            { icon: <Zap size={20} />, label: "Recargas", sub: "Planes Libre", href: "/catalogo?cat=recargas", color: "#1565C0" },
+            { icon: <Zap size={20} />, label: "eSIM", sub: "Sin SIM física", href: "/catalogo?cat=esim", color: "#0277BD" },
+            { icon: <Phone size={20} />, label: "Planes de Renta", sub: "Planes Ultra 5G", href: "/catalogo?cat=planes_renta", color: "#0288D1" },
+            { icon: <Wifi size={20} />, label: "Internet", sub: "WiFi en casa", href: "/catalogo?cat=internet", color: "#0891B2" },
+            { icon: <Car size={20} />, label: "GPS Vehicular", sub: "Flotillas y autos", href: "/catalogo?cat=vehicular", color: "#0D3B8E" },
           ].map((item, i) => (
             <Link key={i} href={item.href} style={{ textDecoration: "none" }}>
-              <div style={{
-                background: "rgba(255,255,255,0.8)", backdropFilter: "blur(12px)",
-                border: "1px solid rgba(255,255,255,0.95)", borderRadius: "18px",
-                padding: "1.1rem 0.875rem",
-                display: "flex", flexDirection: "column", alignItems: "center",
-                gap: "0.5rem", textAlign: "center", cursor: "pointer",
-                boxShadow: "0 2px 12px rgba(21,101,192,0.07)",
-                transition: "transform 0.2s, box-shadow 0.2s",
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(21,101,192,0.15)" }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 2px 12px rgba(21,101,192,0.07)" }}>
+              <div
+                style={{
+                  background: "white",
+                  border: "1px solid #E8EDF5",
+                  borderRadius: "18px",
+                  padding: "1.1rem 0.875rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  textAlign: "center",
+                  cursor: "pointer",
+                  boxShadow: "0 2px 8px rgba(21,101,192,0.06)",
+                  transition: "transform 0.2s, box-shadow 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-3px)"
+                  e.currentTarget.style.boxShadow = "0 8px 20px rgba(21,101,192,0.12)"
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)"
+                  e.currentTarget.style.boxShadow = "0 2px 8px rgba(21,101,192,0.06)"
+                }}
+              >
                 <div style={{ width: "44px", height: "44px", background: `linear-gradient(135deg, ${item.color}15, ${item.color}25)`, borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", color: item.color }}>
                   {item.icon}
                 </div>
@@ -120,14 +182,28 @@ export default function Home() {
       </section>
 
       <section style={{ padding: "1.5rem 1.5rem 1rem", maxWidth: "1200px", margin: "0 auto" }}>
-        <div style={{ background: "linear-gradient(135deg, #4A00E0 0%, #1565C0 55%, #0288D1 100%)", borderRadius: "24px", padding: "2.25rem", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", alignItems: "center", position: "relative", overflow: "hidden" }}>
+        <div
+          style={{
+            background: "linear-gradient(135deg, #4A00E0 0%, #1565C0 55%, #0288D1 100%)",
+            borderRadius: "24px",
+            padding: "2.25rem",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "2rem",
+            alignItems: "center",
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
           <div style={{ position: "absolute", top: "-25%", right: "-3%", width: "320px", height: "320px", background: "rgba(255,255,255,0.05)", borderRadius: "50%", filter: "blur(50px)" }} />
           <div style={{ position: "relative", zIndex: 1 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "999px", padding: "0.3rem 0.9rem", color: "white", fontSize: "0.78rem", fontWeight: 700, marginBottom: "0.875rem" }}>
               <Zap size={11} fill="white" /> Sin SIM física
             </div>
             <h2 style={{ fontSize: "1.8rem", fontWeight: 900, color: "white", marginBottom: "0.625rem", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
-              eSIM Telcel<br />fácil y rápido
+              eSIM Telcel
+              <br />
+              fácil y rápido
             </h2>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.45rem", marginBottom: "1.25rem" }}>
               {["Mayor seguridad, sin tarjeta física", "Entrega inmediata por código QR", "Línea nueva, portabilidad o migración"].map((b) => (
@@ -149,16 +225,22 @@ export default function Home() {
           <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", gap: "0.875rem" }}>
             {esims.slice(0, 3).map((p) => (
               <Link key={p.id} href={`/producto/${p.id}`} style={{ textDecoration: "none" }}>
-                <div style={{ background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.18)", borderRadius: "14px", padding: "0.875rem 1.1rem", display: "flex", alignItems: "center", justifyContent: "space-between", transition: "background 0.2s", cursor: "pointer" }}
-                onMouseEnter={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.18)"}
-                onMouseLeave={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.1)"}>
+                <div
+                  style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.18)", borderRadius: "14px", padding: "0.875rem 1.1rem", display: "flex", alignItems: "center", justifyContent: "space-between", transition: "background 0.2s", cursor: "pointer" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.18)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.1)")}
+                >
                   <div>
                     <p style={{ color: "white", fontWeight: 700, fontSize: "0.9rem", marginBottom: "2px" }}>{p.nombre}</p>
                     <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.75rem" }}>{p.beneficios?.[0]}</p>
                   </div>
                   <div style={{ textAlign: "right", flexShrink: 0 }}>
                     <p style={{ color: "white", fontWeight: 900, fontSize: "1.1rem" }}>${p.precio.toLocaleString("es-MX")}</p>
-                    {p.badge && <span style={{ background: "rgba(255,255,255,0.18)", color: "white", padding: "1px 8px", borderRadius: "999px", fontSize: "0.68rem", fontWeight: 700 }}>{p.badge}</span>}
+                    {p.badge && (
+                      <span style={{ background: "rgba(255,255,255,0.18)", color: "white", padding: "1px 8px", borderRadius: "999px", fontSize: "0.68rem", fontWeight: 700 }}>
+                        {p.badge}
+                      </span>
+                    )}
                   </div>
                 </div>
               </Link>
@@ -178,8 +260,8 @@ export default function Home() {
           </Link>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "1.1rem" }}>
-          {sims.map((p, i) => (
-            <div key={p.id} style={{ animationDelay: `${i * 0.05}s` }}>
+          {sims.map((p) => (
+            <div key={p.id}>
               <ProductCard producto={p} />
             </div>
           ))}
@@ -187,7 +269,20 @@ export default function Home() {
       </section>
 
       <section style={{ padding: "1.5rem 1.5rem", maxWidth: "1200px", margin: "0 auto" }}>
-        <div style={{ background: "linear-gradient(135deg, #0D3B8E 0%, #1565C0 60%, #0288D1 100%)", borderRadius: "24px", padding: "2.25rem", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1.75rem", position: "relative", overflow: "hidden" }}>
+        <div
+          style={{
+            background: "linear-gradient(135deg, #0D3B8E 0%, #1565C0 60%, #0288D1 100%)",
+            borderRadius: "24px",
+            padding: "2.25rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: "1.75rem",
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
           <div style={{ position: "absolute", top: "-30%", right: "-3%", width: "280px", height: "280px", background: "rgba(66,165,245,0.1)", borderRadius: "50%", filter: "blur(50px)" }} />
           <div style={{ position: "relative", zIndex: 1 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.18)", borderRadius: "999px", padding: "0.28rem 0.85rem", color: "white", fontSize: "0.78rem", fontWeight: 600, marginBottom: "0.875rem" }}>
@@ -220,8 +315,8 @@ export default function Home() {
           </Link>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "1.1rem" }}>
-          {planesRenta.map((p, i) => (
-            <div key={p.id} style={{ animationDelay: `${i * 0.05}s` }}>
+          {planesRenta.map((p) => (
+            <div key={p.id}>
               <ProductCard producto={p} />
             </div>
           ))}
@@ -236,7 +331,7 @@ export default function Home() {
             <h3 style={{ fontSize: "1.2rem", fontWeight: 800, color: "white", marginBottom: "0.35rem", position: "relative", zIndex: 1 }}>WiFi Telcel</h3>
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.875rem", marginBottom: "0.4rem", lineHeight: 1.5, position: "relative", zIndex: 1 }}>GB ilimitados desde $399/mes. Sin instalación ni cables.</p>
             <p style={{ color: "#90CAF9", fontSize: "1.3rem", fontWeight: 900, marginBottom: "1.1rem", position: "relative", zIndex: 1 }}>Desde $399</p>
-            <Link href="/catalogo?cat=internet" style={{ display: "inline-flex", alignItems: "center", gap: "5px", background: "rgba(255,255,255,0.15)", backdropFilter: "blur(6px)", color: "white", padding: "0.6rem 1.2rem", borderRadius: "999px", textDecoration: "none", fontWeight: 700, fontSize: "0.875rem", border: "1px solid rgba(255,255,255,0.25)", position: "relative", zIndex: 1 }}>
+            <Link href="/catalogo?cat=internet" style={{ display: "inline-flex", alignItems: "center", gap: "5px", background: "rgba(255,255,255,0.15)", color: "white", padding: "0.6rem 1.2rem", borderRadius: "999px", textDecoration: "none", fontWeight: 700, fontSize: "0.875rem", border: "1px solid rgba(255,255,255,0.25)", position: "relative", zIndex: 1 }}>
               Ver planes <ArrowRight size={14} />
             </Link>
           </div>
@@ -246,7 +341,7 @@ export default function Home() {
             <h3 style={{ fontSize: "1.2rem", fontWeight: 800, color: "white", marginBottom: "0.35rem", position: "relative", zIndex: 1 }}>GPS Vehicular</h3>
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.875rem", marginBottom: "0.4rem", lineHeight: 1.5, position: "relative", zIndex: 1 }}>Localiza tu auto o flotilla en tiempo real con red Telcel.</p>
             <p style={{ color: "#90CAF9", fontSize: "1.3rem", fontWeight: 900, marginBottom: "1.1rem", position: "relative", zIndex: 1 }}>Desde $899</p>
-            <Link href="/catalogo?cat=vehicular" style={{ display: "inline-flex", alignItems: "center", gap: "5px", background: "rgba(255,255,255,0.15)", backdropFilter: "blur(6px)", color: "white", padding: "0.6rem 1.2rem", borderRadius: "999px", textDecoration: "none", fontWeight: 700, fontSize: "0.875rem", border: "1px solid rgba(255,255,255,0.25)", position: "relative", zIndex: 1 }}>
+            <Link href="/catalogo?cat=vehicular" style={{ display: "inline-flex", alignItems: "center", gap: "5px", background: "rgba(255,255,255,0.15)", color: "white", padding: "0.6rem 1.2rem", borderRadius: "999px", textDecoration: "none", fontWeight: 700, fontSize: "0.875rem", border: "1px solid rgba(255,255,255,0.25)", position: "relative", zIndex: 1 }}>
               Ver solución <ArrowRight size={14} />
             </Link>
           </div>
@@ -261,8 +356,8 @@ export default function Home() {
             { icon: <Truck size={20} />, titulo: "Envío a todo México", desc: "Fedex, DHL y Estafeta con rastreo en tiempo real." },
             { icon: <Headphones size={20} />, titulo: "Soporte personalizado", desc: "Equipo disponible por WhatsApp de lunes a viernes 9:00–19:00 hrs." },
           ].map((f, i) => (
-            <div key={i} style={{ background: "rgba(255,255,255,0.8)", backdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.95)", borderRadius: "18px", padding: "1.375rem", display: "flex", flexDirection: "column", gap: "0.75rem", boxShadow: "0 2px 12px rgba(21,101,192,0.06)" }}>
-              <div style={{ width: "46px", height: "46px", background: "linear-gradient(135deg, rgba(21,101,192,0.09), rgba(2,136,209,0.13))", borderRadius: "14px", display: "flex", alignItems: "center", justifyContent: "center", color: "#1565C0", border: "1px solid rgba(21,101,192,0.09)" }}>
+            <div key={i} style={{ background: "white", border: "1px solid #E8EDF5", borderRadius: "18px", padding: "1.375rem", display: "flex", flexDirection: "column", gap: "0.75rem", boxShadow: "0 2px 8px rgba(21,101,192,0.05)" }}>
+              <div style={{ width: "46px", height: "46px", background: "linear-gradient(135deg, rgba(21,101,192,0.09), rgba(2,136,209,0.13))", borderRadius: "14px", display: "flex", alignItems: "center", justifyContent: "center", color: "#1565C0" }}>
                 {f.icon}
               </div>
               <div>
@@ -275,7 +370,18 @@ export default function Home() {
       </section>
 
       <footer style={{ padding: "0 1.5rem 1.5rem", maxWidth: "1200px", margin: "0 auto" }}>
-        <div style={{ background: "linear-gradient(135deg, #0A2D6E, #1255B5)", borderRadius: "20px", padding: "1.5rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem" }}>
+        <div
+          style={{
+            background: "linear-gradient(135deg, #0A2D6E, #1255B5)",
+            borderRadius: "20px",
+            padding: "1.5rem 2rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: "1rem",
+          }}
+        >
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <div style={{ width: "30px", height: "30px", borderRadius: "7px", overflow: "hidden", background: "rgba(255,255,255,0.12)", padding: "2px" }}>
               <Image src="/logo.png" alt="SEM Factory" width={26} height={26} style={{ objectFit: "contain", width: "100%", height: "100%" }} priority />
@@ -286,7 +392,6 @@ export default function Home() {
           <span style={{ color: "rgba(255,255,255,0.3)", fontSize: "0.78rem" }}>© 2026 SEM Factory. Todos los derechos reservados.</span>
         </div>
       </footer>
-
     </div>
   )
 }
